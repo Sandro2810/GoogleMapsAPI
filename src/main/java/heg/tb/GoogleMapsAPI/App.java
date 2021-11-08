@@ -17,11 +17,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        /*
+        //Api Places - Geocoding
         OkHttpClient client = new OkHttpClient().newBuilder()
             .build();
         Request request = new Request.Builder()
-            .url("https://maps.googleapis.com/maps/api/distancematrix/json?origins=Grand-rue 72,Péry&destinations=Biel/Bienne&key=AIzaSyBtpcUMs7e8RkwRuLy9K-0aoXiztwAGobU")
+            .url("https://maps.googleapis.com/maps/api/geocode/json?address=Grand-Rue+72,+Péry&key=AIzaSyBtpcUMs7e8RkwRuLy9K-0aoXiztwAGobU")
             .method("GET", null)
             .build();
         try {
@@ -29,9 +29,28 @@ public class App
             System.out.println(response.body().string());
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
 
-
+        /*
+        //Api Places - Nearby search
+        OkHttpClient client = new OkHttpClient().newBuilder()
+            .build();
+        Request request = new Request.Builder()
+            .url("https://maps.googleapis.com/maps/api/place/nearbysearch/json\n"
+                + "?keyword=velospot\n"
+                + "&location=47.1367785%2C7.2467909\n"
+                + "&rankby=distance\n"
+                + "&key=AIzaSyBtpcUMs7e8RkwRuLy9K-0aoXiztwAGobU")
+            .method("GET", null)
+            .build();
+        try {
+            okhttp3.Response response = client.newCall(request).execute();
+            System.out.println(response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        */
+        /*
         //création Builder okHttpClient
         OkHttpClient.Builder httpClient = new Builder();
 
@@ -46,6 +65,7 @@ public class App
         IService service = retrofit.create(IService.class);
 
         // Requettes avec les paramètres
+        //Distance Matrix
         //conduite
         Call<ApiResponse> callSyncVoiture = service.getData("Grand-Rue 72, Péry", "Rue de l'hopital 2,Biel/Bienne","driving", "AIzaSyBtpcUMs7e8RkwRuLy9K-0aoXiztwAGobU");
 
@@ -71,7 +91,7 @@ public class App
             System.out.println("Velo : " + apiResponseVelo);
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
+        }*/
 
 
     }
